@@ -13,12 +13,13 @@ function setup() {
   createCanvas(640, 360);
   setFrameRate(60);
   ps = new ParticleSystem(createVector(width / 2, height / 2));
+  bg = new Place();
 }
 
 function draw() {
   background(51);
 
-  image(fireplace, 0, 0, width/2, height/2);
+  bg.display();
 
   // Apply gravity force to all Particles
   let gravity = createVector(0, 0.1);
