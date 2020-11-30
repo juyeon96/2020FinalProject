@@ -3,6 +3,11 @@
 // http://natureofcode.com
 
 let ps;
+let fireplace;
+
+function preload() {
+  fireplace = loadImage('./images/fireplace.png');
+}
 
 function setup() {
   createCanvas(640, 360);
@@ -12,6 +17,8 @@ function setup() {
 
 function draw() {
   background(51);
+
+  image(fireplace, 0, 0, width/2, height/2);
 
   // Apply gravity force to all Particles
   let gravity = createVector(0, 0.1);
