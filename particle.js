@@ -23,7 +23,7 @@ class Particle {
   applyForce(force) {
     let f = force.copy();
     f.div(this.mass);
-    this.acceleration.add(f);
+    this.acceleration.add(-f);
   }
 
   // Method to update position
