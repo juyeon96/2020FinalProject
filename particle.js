@@ -17,7 +17,7 @@ class Particle {
 
   run(val) {
     this.update();
-    this.display();
+    this.display(val);
   }
 
   applyForce(force) {
@@ -35,11 +35,9 @@ class Particle {
   }
 
   // Method to display
-  display() {
-    // stroke(200, this.lifespan);
-    // strokeWeight(2);
+  display(val) {
     noStroke();
-    fill(255, 82, 50, this.lifespan);
+    fill(val, 0, 0, this.lifespan);
     ellipse(this.position.x, this.position.y, 12, 12);
   }
 

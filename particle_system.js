@@ -12,11 +12,9 @@ class ParticleSystem {
     this.particles.push(new Particle(this.origin));
   }
 
-  run() {
-    // Run every particle
-    // ES6 for..of loop
+  run(val) {
     for (let particle of this.particles) {
-      particle.run();
+      particle.run(val);
     }
 
     // Filter removes any elements of the array that do not pass the test
