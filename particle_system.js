@@ -3,9 +3,12 @@
 // http://natureofcode.com
 
 class ParticleSystem {
-  constructor(position) {
+  constructor(num, position) {
     this.origin = position.copy();
     this.particles = [];
+    for (let i = 0; i < num; i++) {
+      this.particles.push(new Particle(this.origin));
+    }
   }
 
   addParticle() {

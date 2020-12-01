@@ -2,9 +2,11 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-let fire, candle, table;
+let fire = [];
+let candle, table;
 let bg;
 let slider;
+let gravity;
 
 function preload() {
   candle = loadImage('./images/candle.png');
@@ -15,10 +17,9 @@ function preload() {
 function setup() {
   createCanvas(640, 360);
   setFrameRate(60);
-  slider = createSlider(0, 255, 100);
+  slider = createSlider(0, 255, 200);
   slider.position(550, 20);
   slider.style('width', '80px');
-  fire = new ParticleSystem(createVector(width / 2, height / 2));
   bg = new Place();
 }
 
@@ -30,9 +31,15 @@ function draw() {
   val = slider.value();
 
   // Apply gravity force to all Particles
-  let gravity = createVector(0, 0.1);
-  fire.applyForce(gravity);
+  gravity = createVector(0, 0.1);
 
-  fire.addParticle();
-  fire.run(val);
+  for (let i = 0; i < fire.length; i++) {
+    fire[i].applyForce(gravity);
+    fire[i].addParticle();
+    fire[i].run(val);
+  }
+}
+
+function mousePressed() {
+  fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
 }
