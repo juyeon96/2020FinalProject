@@ -9,15 +9,11 @@ class Place {
     stroke(255);
     line(0, 170, 220, 170);
     line(420, 170, 640, 170);
-    // line(0, 340, 100, 170);
-    // line(640, 340, 540, 170);
-    // line(100, 0, 100, 170);
-    // line(540, 0, 540, 170);
+
+    image(art[artVal], 480, 50, 100, 80);
 
     image(door, 60, 0, 100, 170);
-
-    image(art, 480, 50, 120, 80);
-
+    
     //fireplace
     rectMode(CENTER);
     noStroke();
