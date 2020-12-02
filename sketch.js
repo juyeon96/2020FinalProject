@@ -12,6 +12,8 @@ function preload() {
   candle = loadImage('./images/candle.png');
   table = loadImage('./images/table.png');
   hand = loadImage('./images/hand.png');
+  door = loadImage('./images/door.jpg');
+  art = loadImage('./images/art.png');
 }
 
 function setup() {
@@ -24,8 +26,6 @@ function setup() {
 }
 
 function draw() {
-  background(51);
-
   bg.display();
 
   val = slider.value();
