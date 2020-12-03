@@ -47,7 +47,7 @@ function draw() {
   for (let i = 0; i < fire.length; i++) {
     fire[i].applyForce(gravity);
     fire[i].addParticle();
-    fire[i].run(val);
+    fire[i].run(val1);
   }
 }
 

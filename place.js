@@ -13,7 +13,7 @@ class Place {
     image(art[artVal], 480, 50, 100, 80);
 
     image(door, 60, 0, 100, 170);
-    
+
     //fireplace
     rectMode(CENTER);
     noStroke();
