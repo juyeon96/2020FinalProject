@@ -11,6 +11,7 @@ let slider;
 let gravity;
 let button;
 let artVal;
+let fireSound;
 
 function preload() {
   candle = loadImage('./images/candle.png');
@@ -34,6 +35,7 @@ function setup() {
   button.mousePressed(changePIC);
   bg = new Place();
   artVal = 0;
+  fireSound = createAudio('./sound/fire sound.wav');
 }
 
 function draw() {

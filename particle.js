@@ -39,6 +39,7 @@ class Particle {
     noStroke();
     fill(val, 0, 0, this.lifespan);
     ellipse(this.position.x, this.position.y, 12, 12);
+    fireSound.play();
   }
 
   // Is the particle still useful?
