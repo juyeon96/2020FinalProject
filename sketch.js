@@ -4,12 +4,13 @@
 
 let fire = [];
 let art = [];
+let chair = [];
 let candle, table, door;
 let val1, val2;
 let bg;
 let slider;
 let gravity;
-let button;
+let button1, button2;
 let artVal;
 let fireSound;
 
@@ -21,6 +22,11 @@ function preload() {
   art[1] = loadImage('./images/art2.png');
   art[2] = loadImage('./images/art3.png');
   art[3] = loadImage('./images/art4.png');
+  chair[0] = loadImage('./images/chair1.png');
+  chair[1] = loadImage('./images/chair2.png');
+  chair[2] = loadImage('./images/chair3.png');
+  chair[3] = loadImage('./images/chair4.png');
+  chair[4] = loadImage('./images/chair5.png');
 }
 
 function setup() {
@@ -29,11 +35,15 @@ function setup() {
   slider = createSlider(0, 255, 200);
   slider.position(550, 20);
   slider.style('width', '80px');
-  button = createButton('CHANGE PICTURE');
-  button.position(400, 20);
-  button.mousePressed(changePIC);
+  button1 = createButton('CHANGE PICTURE');
+  button1.position(400, 20);
+  button1.mousePressed(changePIC);
+  button2 = createButton('CHAIR');
+  button2.position(100, 20);
+  button2.mousePressed(changeChair);
   bg = new Place();
   artVal = 0;
+  chairVal = 0;
   fireSound = createAudio('./sound/fire sound.wav');
 }
 
@@ -63,4 +73,13 @@ function changePIC() {
     artVal++;
 
   image(art[artVal], 480, 50, 100, 80);
+}
+
+function changeChair() {
+  if(chairVal==4)
+    chairVal = 0;
+  else
+    chairVal++;
+
+  image(chair[chairVal], 50, 180, 120, 150);
 }

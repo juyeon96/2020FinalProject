@@ -10,8 +10,13 @@ class Place {
     line(0, 170, 220, 170);
     line(420, 170, 640, 170);
 
+    //photoframe
     image(art[artVal], 480, 50, 100, 80);
 
+    //chair
+    image(chair[chairVal], 50, 180, 120, 150);
+
+    //door
     image(door, 60, 0, 100, 170);
 
     //fireplace
