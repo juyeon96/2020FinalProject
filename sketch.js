@@ -4,7 +4,7 @@
 
 let fire = [];
 let art = [];
-let candle, table, hand, door;
+let candle, table, door;
 let val1, val2;
 let bg;
 let slider;
@@ -16,7 +16,6 @@ let fireSound;
 function preload() {
   candle = loadImage('./images/candle.png');
   table = loadImage('./images/table.png');
-  hand = loadImage('./images/hand.png');
   door = loadImage('./images/door.jpg');
   art[0] = loadImage('./images/art1.png');
   art[1] = loadImage('./images/art2.png');

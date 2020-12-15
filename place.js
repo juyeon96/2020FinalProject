@@ -30,8 +30,5 @@ class Place {
 
     //candle
     image(candle, 450, 160, 150, 190);
-
-    //hand
-    image(hand, 100, 220, 100, 150);
   }
 }
