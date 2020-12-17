@@ -5,19 +5,29 @@
 let fire = [];
 let art = [];
 let chair = [];
-let candle, table, door;
+let candle = [];
+let table = [];
+let door = [];
+let fireplace = [];
 let val1, val2;
+let pressedBool; // 0 = not pressed 1 = pressed
 let bg;
 let slider;
 let gravity;
-let button1, button2;
-let artVal;
+let button1, button2, button3, button4, button5, button6;
+let artVal, chairVal, candleVal, tableVal, doorVal, fireplaceVal;
 let fireSound;
 
 function preload() {
-  candle = loadImage('./images/candle.png');
-  table = loadImage('./images/table.png');
-  door = loadImage('./images/door.jpg');
+  candle[0] = loadImage('./images/candle1.png');
+  candle[1] = loadImage('./images/candle2.png');
+  table[0] = loadImage('./images/table1.png');
+  table[1] = loadImage('./images/table2.png');
+  door[0] = loadImage('./images/door1.jpg');
+  door[1] = loadImage('./images/door2.jpg');
+  fireplace[0] = loadImage('./images/fireplace1.png');
+  fireplace[1] = loadImage('./images/fireplace2.png');
+  fireplace[2] = loadImage('./images/fireplace3.png');
   art[0] = loadImage('./images/art1.png');
   art[1] = loadImage('./images/art2.png');
   art[2] = loadImage('./images/art3.png');
@@ -38,12 +48,35 @@ function setup() {
   button1 = createButton('CHANGE PICTURE');
   button1.position(400, 20);
   button1.mousePressed(changePIC);
+  button1.mouseReleased(releaseVal);
   button2 = createButton('CHAIR');
-  button2.position(100, 20);
+  button2.position(20, 340);
   button2.mousePressed(changeChair);
+  button2.mouseReleased(releaseVal);
+  button3 = createButton('CANDLE');
+  button3.position(90, 340);
+  button3.mousePressed(changeCandle);
+  button3.mouseReleased(releaseVal);
+  button4 = createButton('TABLE');
+  button4.position(170, 340);
+  button4.mousePressed(changeTable);
+  button4.mouseReleased(releaseVal);
+  button5 = createButton('DOOR');
+  button5.position(240, 340);
+  button5.mousePressed(changeDoor);
+  button5.mouseReleased(releaseVal);
+  button6 = createButton('FIREPLACE');
+  button6.position(310, 340);
+  button6.mousePressed(changeFireplace);
+  button6.mouseReleased(releaseVal);
   bg = new Place();
   artVal = 0;
   chairVal = 0;
+  candleVal = 0;
+  tableVal = 0;
+  doorVal = 0;
+  fireplaceVal = 0;
+  pressedBool = 0;
   fireSound = createAudio('./sound/fire sound.wav');
 }
 
@@ -63,10 +96,13 @@ function draw() {
 }
 
 function mousePressed() {
-  fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  if(pressedBool == 0)
+    fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
 }
 
 function changePIC() {
+  pressedBool = 1;
+
   if(artVal==3)
     artVal = 0;
   else
@@ -76,10 +112,60 @@ function changePIC() {
 }
 
 function changeChair() {
+  pressedBool = 1;
+
   if(chairVal==4)
     chairVal = 0;
   else
     chairVal++;
 
   image(chair[chairVal], 50, 180, 120, 150);
+}
+
+function changeCandle() {
+  pressedBool = 1;
+
+  if(candleVal==1)
+    candleVal = 0;
+  else
+    candleVal++;
+
+  image(candle[candleVal], 480, 150, 80, 150);
+}
+
+function changeTable() {
+  pressedBool = 1;
+
+  if(tableVal==1)
+    tableVal = 0;
+  else
+    tableVal++;
+
+  image(table[tableVal], 370, 230, 300, 300);
+}
+
+function changeDoor() {
+  pressedBool = 1;
+
+  if(doorVal==1)
+    doorVal = 0;
+  else
+    doorVal++;
+
+  image(door[doorVal], 60, 0, 100, 170);
+}
+
+function changeFireplace() {
+  pressedBool = 1;
+
+  if(fireplaceVal==2)
+    fireplaceVal = 0;
+  else
+    fireplaceVal++;
+
+  image(fireplace[fireplaceVal], 230, 50, 200, 170);
+}
+
+function releaseVal() {
+  pressedBool = 0;
 }
