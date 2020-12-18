@@ -25,6 +25,6 @@ class Place {
     image(table[tableVal], 370, 230, 300, 300);
 
     //candle
-    image(candle[candleVal], 480, 150, 80, 150);
+    image(candle[candleVal], 450, 150, (150/candle[candleVal].height)*candle[candleVal].width, 150);
   }
 }
