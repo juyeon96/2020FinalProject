@@ -83,6 +83,8 @@ function setup() {
 function draw() {
   bg.display();
 
+  text(mouseX+" "+mouseY, 150, 200);
+
   val1 = slider.value();
 
   // Apply gravity force to all Particles
@@ -96,8 +98,20 @@ function draw() {
 }
 
 function mousePressed() {
-  if(pressedBool == 0)
-    fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  if(fireplaceVal == 0) {
+    if(mouseX>265 && mouseX<394 && mouseY>103 && mouseY<155)
+      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  }
+
+  else if(fireplaceVal == 1) {
+    if(mouseX>288 && mouseX<371 && mouseY>146 && mouseY<200)
+      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  }
+
+  else if(fireplaceVal == 2) {
+    if(mouseX>264 && mouseX<398 && mouseY>108 && mouseY<173)
+      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  }
 }
 
 function changePIC() {
