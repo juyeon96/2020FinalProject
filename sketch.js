@@ -15,7 +15,7 @@ let pressedBool; // 0 = not pressed 1 = pressed
 let bg;
 let slider;
 let gravity;
-let button1, button2, button3, button4, button5, button6;
+let button1, button2, button3, button4, button5;
 let artVal, chairVal, candleVal, tableVal, doorVal, fireplaceVal;
 let fireSound;
 let i;
@@ -50,27 +50,18 @@ function setup() {
   button1 = createButton('CHANGE PICTURE');
   button1.position(400, 20);
   button1.mousePressed(changePIC);
-  button1.mouseReleased(releaseVal);
   button2 = createButton('CHAIR');
   button2.position(20, 340);
   button2.mousePressed(changeChair);
-  button2.mouseReleased(releaseVal);
   button3 = createButton('CANDLE');
   button3.position(90, 340);
   button3.mousePressed(changeCandle);
-  button3.mouseReleased(releaseVal);
   button4 = createButton('TABLE');
   button4.position(170, 340);
   button4.mousePressed(changeTable);
-  button4.mouseReleased(releaseVal);
-  button5 = createButton('DOOR');
+  button5 = createButton('FIREPLACE');
   button5.position(240, 340);
-  button5.mousePressed(changeDoor);
-  button5.mouseReleased(releaseVal);
-  button6 = createButton('FIREPLACE');
-  button6.position(310, 340);
-  button6.mousePressed(changeFireplace);
-  button6.mouseReleased(releaseVal);
+  button5.mousePressed(changeFireplace);
   bg = new Place();
   artVal = 0;
   chairVal = 0;
@@ -101,6 +92,11 @@ function draw() {
     candleFire[i].addParticle();
     candleFire[i].run(val1);
   }
+}
+
+function mouseClicked() {
+  if(mouseX>60 && mouseX<160 && mouseY>0 && mouseY<170)
+    changeDoor();
 }
 
 function mousePressed() {
@@ -179,8 +175,6 @@ function changeTable() {
 }
 
 function changeDoor() {
-  pressedBool = 1;
-
   if(doorVal==1)
     doorVal = 0;
   else
@@ -204,6 +198,6 @@ function changeFireplace() {
   image(fireplace[fireplaceVal], 230, 50, 200, 170);
 }
 
-function releaseVal() {
+function mouseReleased() {
   pressedBool = 0;
 }
