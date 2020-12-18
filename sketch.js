@@ -2,7 +2,8 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-let fire = [];
+let fireplaceFire = [];
+let candleFire = [];
 let art = [];
 let chair = [];
 let candle = [];
@@ -17,6 +18,7 @@ let gravity;
 let button1, button2, button3, button4, button5, button6;
 let artVal, chairVal, candleVal, tableVal, doorVal, fireplaceVal;
 let fireSound;
+let i;
 
 function preload() {
   candle[0] = loadImage('./images/candle1.png');
@@ -83,34 +85,48 @@ function setup() {
 function draw() {
   bg.display();
 
-  text(mouseX+" "+mouseY, 150, 200);
-
   val1 = slider.value();
 
   // Apply gravity force to all Particles
   gravity = createVector(0, 0.1);
 
-  for (let i = 0; i < fire.length; i++) {
-    fire[i].applyForce(gravity);
-    fire[i].addParticle();
-    fire[i].run(val1);
+  for (let i = 0; i < fireplaceFire.length; i++) {
+    fireplaceFire[i].applyForce(gravity);
+    fireplaceFire[i].addParticle();
+    fireplaceFire[i].run(val1);
+  }
+
+  for (let i = 0; i < candleFire.length; i++) {
+    candleFire[i].applyForce(gravity);
+    candleFire[i].addParticle();
+    candleFire[i].run(val1);
   }
 }
 
 function mousePressed() {
   if(fireplaceVal == 0) {
     if(mouseX>265 && mouseX<394 && mouseY>103 && mouseY<155)
-      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+      fireplaceFire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
   }
 
   else if(fireplaceVal == 1) {
     if(mouseX>288 && mouseX<371 && mouseY>146 && mouseY<200)
-      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+      fireplaceFire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
   }
 
   else if(fireplaceVal == 2) {
     if(mouseX>264 && mouseX<398 && mouseY>108 && mouseY<173)
-      fire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+      fireplaceFire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  }
+
+  if(candleVal == 0) {
+    if(mouseX>478 && mouseX<482 && mouseY>160 && mouseY<164)
+      candleFire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
+  }
+
+  else if(candleVal == 1) {
+    if((mouseX>472 && mouseX<476 && mouseY>155 && mouseY<162) || (mouseX>521 && mouseX<525 && mouseY>152 && mouseY<159) || (mouseX>569 && mouseX<573 && mouseY>155 && mouseY<162))
+      candleFire.push(new ParticleSystem(1, createVector(mouseX, mouseY)));
   }
 }
 
@@ -139,12 +155,16 @@ function changeChair() {
 function changeCandle() {
   pressedBool = 1;
 
-  if(candleVal==1)
+  if(candleVal==1) {
+    candleFire.splice(0, candleFire.length);
     candleVal = 0;
-  else
+  }
+  else {
+    candleFire.splice(0, candleFire.length);
     candleVal++;
+  }
 
-  image(candle[candleVal], 480, 150, 80, 150);
+  image(candle[candleVal], 480, 150, (150/candle[candleVal].height)*candle[candleVal].width, 150);
 }
 
 function changeTable() {
@@ -172,10 +192,14 @@ function changeDoor() {
 function changeFireplace() {
   pressedBool = 1;
 
-  if(fireplaceVal==2)
+  if(fireplaceVal==2) {
+    fireplaceFire.splice(0, fireplaceFire.length);
     fireplaceVal = 0;
-  else
+  }
+  else {
+    fireplaceFire.splice(0, fireplaceFire.length);
     fireplaceVal++;
+  }
 
   image(fireplace[fireplaceVal], 230, 50, 200, 170);
 }
